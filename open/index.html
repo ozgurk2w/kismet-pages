@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sezgi - AI Fortune & Tarot</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, sans-serif; background: #0A0E1A; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .container { text-align: center; padding: 2rem; max-width: 400px; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #E8C8A0; }
+    p { color: #999; line-height: 1.6; }
+    .btn { display: inline-block; margin-top: 1.5rem; padding: 14px 32px; background: linear-gradient(135deg, #C4728F, #E8C8A0); color: #0A0E1A; text-decoration: none; border-radius: 28px; font-weight: 600; font-size: 1rem; }
+  </style>
+  <script>
+    // Try to open the app via custom scheme, fallback to Play Store
+    var path = window.location.pathname.replace('/kismet-pages/open', '');
+    var appUrl = 'sezgi:/' + (path || '/');
+    var storeUrl = 'https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet';
+
+    var timeout = setTimeout(function() { window.location = storeUrl; }, 2000);
+    window.location = appUrl;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Sezgi</h1>
+    <p>AI-Powered Fortune & Tarot Reading</p>
+    <p>Redirecting to app...</p>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet">Get on Google Play</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.yinyangstudio.kismet",
+      "sha256_cert_fingerprints": [
+        "02:DF:A9:24:B1:EA:87:8C:6B:C9:B9:71:36:61:33:9A:95:3F:7E:17:FE:B2:C8:F1:7E:7A:62:1E:AC:BB:7B:98"
+      ]
+    }
+  }
+]
