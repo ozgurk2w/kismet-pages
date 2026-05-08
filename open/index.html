@@ -144,22 +144,36 @@
       var isAndroid = /android/.test(ua);
       var isIOS = /iphone|ipad|ipod/.test(ua) && !window.MSStream;
 
-      var path = window.location.pathname.replace(/^\/kismet-pages\/open/, '');
+      function appPathFromPagePath(rawPath) {
+        var prefix = '/kismet-pages/open';
+        if (rawPath === prefix || rawPath === prefix + '/') {
+          return '/';
+        }
+        if (rawPath.indexOf(prefix + '/') === 0) {
+          return rawPath.slice(prefix.length);
+        }
+        return null;
+      }
+
+      var appPath = appPathFromPagePath(window.location.pathname);
       var query = window.location.search; // includes leading "?" or empty
-      var appUrl = 'sezgi://' + path.replace(/^\//, '') + query;
+      var appUrl = appPath === null ? null : 'sezgi://' + appPath + query;
 
       var storeUrl = 'https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet';
       var cta = document.getElementById('cta');
       var message = document.getElementById('message');
       var hint = document.getElementById('hint');
 
-      if (isAndroid) {
+      if (isAndroid && appUrl !== null) {
         // Try the custom scheme once. If the app handled it, the page
         // unloads and the user lands inside the reading. If not, the
         // CTA below remains tappable for Play Store install.
         try { window.location.replace(appUrl); } catch (_) {}
         message.textContent = 'Sezgi did not open. Tap below to install.';
         hint.textContent = 'Already installed? Open the app, then return to this link.';
+      } else if (isAndroid) {
+        message.textContent = 'This Sezgi link is not valid. Tap below to install the app.';
+        hint.textContent = '';
       } else if (isIOS) {
         message.textContent = 'Sezgi is currently available on Android. iOS is on the way.';
         cta.style.display = 'none';

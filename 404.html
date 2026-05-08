@@ -134,24 +134,31 @@
       var isAndroid = /android/.test(ua);
       var isIOS = /iphone|ipad|ipod/.test(ua) && !window.MSStream;
 
-      // Strip the /kismet-pages/open prefix so any sub-path lands as the
-      // app's deep-link path. Falls through to home if the URL didn't
-      // include /open at all (e.g. user typed a typo'd top-level path).
+      // Strip only the exact /kismet-pages/open segment so prefix lookalikes
+      // cannot bounce into the custom scheme.
       var rawPath = window.location.pathname;
-      var openMatch = rawPath.match(/\/kismet-pages\/open(\/.*)?$/);
-      var path = openMatch && openMatch[1] ? openMatch[1] : '';
+      var prefix = '/kismet-pages/open';
+      var appPath = null;
+      if (rawPath === prefix || rawPath === prefix + '/') {
+        appPath = '/';
+      } else if (rawPath.indexOf(prefix + '/') === 0) {
+        appPath = rawPath.slice(prefix.length);
+      }
       var query = window.location.search;
-      var appUrl = 'sezgi://' + path.replace(/^\//, '') + query;
+      var appUrl = appPath === null ? null : 'sezgi://' + appPath + query;
 
       var storeUrl = 'https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet';
       var cta = document.getElementById('cta');
       var message = document.getElementById('message');
       var hint = document.getElementById('hint');
 
-      if (isAndroid) {
+      if (isAndroid && appUrl !== null) {
         try { window.location.replace(appUrl); } catch (_) {}
         message.textContent = 'Sezgi did not open. Tap below to install.';
         hint.textContent = 'Already installed? Open the app, then return to this link.';
+      } else if (isAndroid) {
+        message.textContent = 'This Sezgi link is not valid. Tap below to install the app.';
+        hint.textContent = '';
       } else if (isIOS) {
         message.textContent = 'Sezgi is currently available on Android. iOS is on the way.';
         cta.style.display = 'none';
