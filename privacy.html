@@ -22,7 +22,7 @@
   <div class="container">
     <a href="index.html" class="back">&larr; Back to Sezgi</a>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: May 3, 2026</p>
+    <p class="updated">Last updated: May 22, 2026</p>
 
     <p>Yin&Yang Studio ("we", "our", "us") operates the Sezgi mobile application. This Privacy Policy explains how we collect, use, and protect your information.</p>
 
@@ -30,7 +30,7 @@
     <p><strong>Account Data:</strong> When you use Sezgi, an anonymous account is created automatically. No email, name, or personal identifier is required to use the app. If you choose to sign in with Google, your Google account email and display name are linked to your Sezgi profile so your data survives device changes.</p>
     <p><strong>Birth Date (Optional):</strong> If you choose to provide your birth date for horoscope features, it is stored securely and used solely to determine your zodiac sign and compatibility readings.</p>
     <p><strong>User-Generated Content:</strong> Text you enter for fortune readings (dream descriptions, questions, names) is sent to our AI processing service to generate your reading. This content is stored temporarily to display your reading and in your reading history.</p>
-    <p><strong>Photos (Optional, Object-Based Readings):</strong> For coffee cup (kahve falı) and palm (el falı) reading features, photos you upload are processed by our AI service. These photos are sent to the AI provider, retained briefly for the duration of the reading generation, and are not stored permanently on our servers.</p>
+    <p><strong>Photos (Optional, Object-Based Readings):</strong> For coffee cup (kahve falı) and palm (el falı) reading features, photos you upload are processed by our AI service. Coffee cup photos may be processed by Anthropic Claude or Moonshot Kimi; palm photos are processed by Anthropic Claude. These photos are sent to the AI provider, retained briefly for the duration of the reading generation, and are not stored permanently on our servers.</p>
     <p><strong>Photos (Optional, Face-Based Reading — Special Category Data):</strong> The face reading (yüz falı, mian xiang) feature processes photos of your face. We treat face photos with heightened care because facial images may be classified as <em>biometric data</em> under several legal frameworks (GDPR Article 9 special category, Illinois BIPA, California CCPA, and similar regimes worldwide). Specifically:</p>
     <ul>
       <li>Face photos are sent to our premium AI provider (Anthropic Claude) for the sole purpose of generating your face reading. They are NOT used to identify, recognize, or build a biometric template of you.</li>
@@ -43,8 +43,9 @@
     <h2>2. AI-Powered Features</h2>
     <p>Sezgi uses artificial intelligence to generate fortune readings. Our AI services are provided by:</p>
     <ul>
-      <li><strong>Anthropic Claude</strong> (United States — premium text readings AND ALL photo-based readings, including the face reading. Inputs are sent over TLS 1.2+; Anthropic's API data-use policy excludes inputs from model training.)</li>
-      <li><strong>DeepSeek</strong> (China — free-tier short-form text readings only. Sensitive content such as face, palm, or coffee cup photos is NEVER sent to DeepSeek.)</li>
+      <li><strong>Anthropic Claude</strong> (United States — premium text, palm readings, face readings, default photo readings, and AI fallback. Inputs are sent over TLS 1.2+; Anthropic's API data-use policy excludes inputs from model training.)</li>
+      <li><strong>Moonshot Kimi</strong> (Singapore — limited coffee cup image reading canary only. Face and palm photos are not sent to Moonshot Kimi.)</li>
+      <li><strong>DeepSeek</strong> (China — text readings only. Sensitive content such as face, palm, or coffee cup photos is not sent to DeepSeek.)</li>
       <li><strong>Google Gemini</strong> (United States — daily horoscope batch generation only. No individual user input is sent.)</li>
     </ul>
     <p>When you request a reading, your input (text or images) is sent to the relevant AI service through our secure server infrastructure. The AI providers process your input to generate a reading response. We do not share your personal identity with these providers — only the content necessary for generating your reading. Where servers are located outside your region (e.g. DeepSeek in China, Anthropic and Google in the United States), your input is transferred to those jurisdictions for processing.</p>
