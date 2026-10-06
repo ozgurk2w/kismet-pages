@@ -1,104 +1,687 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Sezgi</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a1a; color: #c8bda8; min-height: 100vh; line-height: 1.7; }
-    .container { max-width: 740px; margin: 0 auto; padding: 48px 24px 80px; }
-    h1 { font-size: 2rem; background: linear-gradient(135deg, #d4a853, #f0d78c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-    .updated { color: #6a6050; font-size: 0.9rem; margin-bottom: 36px; }
-    h2 { color: #d4a853; font-size: 1.2rem; margin: 32px 0 12px; }
-    p, li { margin-bottom: 10px; font-size: 0.95rem; }
-    ul { padding-left: 20px; }
-    a { color: #d4a853; }
-    .back { display: inline-block; margin-bottom: 24px; color: #6a6050; text-decoration: none; font-size: 0.9rem; }
-    .back:hover { color: #d4a853; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="index.html" class="back">&larr; Back to Sezgi</a>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: May 22, 2026</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Sezgi</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #0a0a1a;
+        color: #c8bda8;
+        min-height: 100vh;
+        line-height: 1.7;
+      }
+      .container {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 48px 16px 80px;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #e6c27a;
+        margin-bottom: 8px;
+      }
+      .updated {
+        color: #8a7f6c;
+        font-size: 0.9rem;
+        margin-bottom: 36px;
+      }
+      h2 {
+        color: #d4a853;
+        font-size: 1.2rem;
+        margin: 32px 0 12px;
+      }
+      h3 {
+        color: #d4a853;
+        font-size: 1rem;
+        margin: 20px 0 8px;
+      }
+      p,
+      li {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      a {
+        color: #d4a853;
+      }
+      .back {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: #8a7f6c;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .back:hover {
+        color: #d4a853;
+      }
+      .operator {
+        border: 1px solid #3a3326;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0 20px;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        margin: 12px 0 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.88rem;
+      }
+      th,
+      td {
+        border: 1px solid #3a3326;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: #d4a853;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="index.html" class="back">&larr; Back to Sezgi</a>
+      <h1>Privacy policy</h1>
+      <p class="updated">Last updated: October 5, 2026</p>
 
-    <p>Yin&Yang Studio ("we", "our", "us") operates the Sezgi mobile application. This Privacy Policy explains how we collect, use, and protect your information.</p>
+      <p>
+        This policy explains what the Sezgi app collects, why, who it is shared
+        with, how long it is kept, and what you can do about it. It covers the
+        Sezgi app for Android and iOS and the services behind it.
+      </p>
 
-    <h2>1. Information We Collect</h2>
-    <p><strong>Account Data:</strong> When you use Sezgi, an anonymous account is created automatically. No email, name, or personal identifier is required to use the app. If you choose to sign in with Google, your Google account email and display name are linked to your Sezgi profile so your data survives device changes.</p>
-    <p><strong>Birth Date (Optional):</strong> If you choose to provide your birth date for horoscope features, it is stored securely and used solely to determine your zodiac sign and compatibility readings.</p>
-    <p><strong>User-Generated Content:</strong> Text you enter for fortune readings (dream descriptions, questions, names) is sent to our AI processing service to generate your reading. This content is stored temporarily to display your reading and in your reading history.</p>
-    <p><strong>Photos (Optional, Object-Based Readings):</strong> For coffee cup (kahve falı) and palm (el falı) reading features, photos you upload are processed by our AI service. Coffee cup photos may be processed by Anthropic Claude or Moonshot Kimi; palm photos are processed by Anthropic Claude. These photos are sent to the AI provider, retained briefly for the duration of the reading generation, and are not stored permanently on our servers.</p>
-    <p><strong>Photos (Optional, Face-Based Reading — Special Category Data):</strong> The face reading (yüz falı, mian xiang) feature processes photos of your face. We treat face photos with heightened care because facial images may be classified as <em>biometric data</em> under several legal frameworks (GDPR Article 9 special category, Illinois BIPA, California CCPA, and similar regimes worldwide). Specifically:</p>
-    <ul>
-      <li>Face photos are sent to our premium AI provider (Anthropic Claude) for the sole purpose of generating your face reading. They are NOT used to identify, recognize, or build a biometric template of you.</li>
-      <li>Face photos are processed in transit only — not stored on Sezgi servers, not retained by Anthropic for training (per Anthropic's API data-use policy), and not shared with any third party beyond the AI provider that generates the reading.</li>
-      <li>By tapping "Read My Face" you affirmatively consent to this processing for the single purpose of generating that reading. You may delete your account at any time and we will erase the associated reading body from our servers (the photo itself was never stored).</li>
-      <li>If you live in a jurisdiction that requires explicit biometric consent (Illinois, Texas, Washington, EU, UK, etc.) and you wish to revoke consent, simply do not use the face reading feature; alternatively delete your account through Settings → Delete Account.</li>
-    </ul>
-    <p><strong>Usage Data:</strong> We collect anonymized usage statistics (features used, reading counts) to improve the app experience.</p>
+      <h2 id="who">1. Who runs Sezgi and how to reach us</h2>
+      <div class="operator">
+        <p>
+          Sezgi is operated by <strong>OZCANLAR (Ozgur Ozcan, sole proprietor)</strong>, Toronto, Ontario, Canada. We
+          are the controller of the personal data described in this policy.
+        </p>
+        <p>
+          Email for privacy requests, questions and complaints:
+          <strong>yinyangstudio.app@gmail.com</strong>
+        </p>
+        <p>
+          The person responsible for protecting personal information (including
+          under Quebec's Law 25 and Canada's PIPEDA) is Ozgur Ozcan, who can
+          be reached at the same address.
+        </p>
+      </div>
 
-    <h2>2. AI-Powered Features</h2>
-    <p>Sezgi uses artificial intelligence to generate fortune readings. Our AI services are provided by:</p>
-    <ul>
-      <li><strong>Anthropic Claude</strong> (United States — premium text, palm readings, face readings, default photo readings, and AI fallback. Inputs are sent over TLS 1.2+; Anthropic's API data-use policy excludes inputs from model training.)</li>
-      <li><strong>Moonshot Kimi</strong> (Singapore — limited coffee cup image reading canary only. Face and palm photos are not sent to Moonshot Kimi.)</li>
-      <li><strong>DeepSeek</strong> (China — text readings only. Sensitive content such as face, palm, or coffee cup photos is not sent to DeepSeek.)</li>
-      <li><strong>Google Gemini</strong> (United States — daily horoscope batch generation only. No individual user input is sent.)</li>
-    </ul>
-    <p>When you request a reading, your input (text or images) is sent to the relevant AI service through our secure server infrastructure. The AI providers process your input to generate a reading response. We do not share your personal identity with these providers — only the content necessary for generating your reading. Where servers are located outside your region (e.g. DeepSeek in China, Anthropic and Google in the United States), your input is transferred to those jurisdictions for processing.</p>
-    <p><strong>Important:</strong> AI-generated readings are for entertainment purposes only and should not be considered professional advice of any kind. The face reading feature does NOT perform face recognition, identification, or biometric template extraction — it produces a narrative interpretation only, similar to a tarot reading interpreting an image rather than identifying you.</p>
+      <h2 id="collect">2. What we collect</h2>
+      <h3>Account</h3>
+      <ul>
+        <li>
+          When you first open Sezgi, an anonymous account is created with a
+          random account ID. You do not need an email address or a name.
+        </li>
+        <li>
+          If you choose to sign in with Google or with Apple, we receive the
+          email address and, if the provider shares it, the name of that
+          account. Apple may give us a private relay address instead of your
+          real email.
+        </li>
+      </ul>
+      <h3>What you give us for readings</h3>
+      <ul>
+        <li>
+          Text you type: questions, dream descriptions, names and similar
+          details.
+        </li>
+        <li>
+          Birth details, if you add them: date, time, city and the
+          coordinates and time zone we derive from that city. They are used to
+          work out your sign and chart, and some readings use your first name
+          and birth date.
+        </li>
+        <li>
+          Choices you make in the app, such as the cards or runes drawn, the
+          reading type, your focus and preferred tone.
+        </li>
+        <li>
+          Photos, only when you use a photo reading: a coffee cup, your palm or
+          your face. See section 4 for how photos are handled.
+        </li>
+      </ul>
+      <h3>What Sezgi creates for you</h3>
+      <ul>
+        <li>
+          Your readings and short summaries of them, which form your journal.
+        </li>
+        <li>
+          Reading memory: Sezgi uses short summaries of your earlier readings
+          to make new readings continue the story. It is on unless you turn it
+          off in You &rarr; Settings &rarr; Reading memory.
+        </li>
+        <li>
+          Credits, streaks, daily usage counts, referral codes and the record
+          of rewarded ads you watched.
+        </li>
+      </ul>
+      <h3>Purchases</h3>
+      <ul>
+        <li>
+          If you subscribe or buy a pack, Google Play or the App Store handles
+          the payment. We never see your card. We receive the purchase status,
+          product, dates, country and price from the store through RevenueCat.
+        </li>
+      </ul>
+      <h3>Device and usage information</h3>
+      <ul>
+        <li>
+          Crash reports: device model, operating system, app version and the
+          error, linked to your account ID so we can fix problems you hit.
+        </li>
+        <li>
+          Usage events (for example which features you open). In the EEA, the
+          UK and Switzerland, where the law requires consent, Google's consent
+          form asks first: we collect usage events only if your choices in
+          that form allow it, and if you decline, analytics stays off.
+          Elsewhere they are collected by default.
+        </li>
+        <li>
+          Advertising: the ad SDK uses your device's advertising ID and IP
+          address (which gives an approximate location) to deliver and measure
+          ads.
+        </li>
+        <li>
+          A push notification token, if you allow notifications, and your
+          notification settings.
+        </li>
+        <li>
+          The language of the app and, for daily limits, the date of your
+          activity.
+        </li>
+      </ul>
+      <p>
+        We do not collect your contacts, your precise location, or your
+        microphone. Text-to-speech, where offered, runs on your device.
+      </p>
 
-    <h2>3. How We Use Your Information</h2>
-    <ul>
-      <li>To generate personalized fortune readings</li>
-      <li>To display your reading history</li>
-      <li>To determine your zodiac sign (if birth date is provided)</li>
-      <li>To track daily usage limits</li>
-      <li>To improve app functionality and user experience</li>
-    </ul>
+      <h2 id="use">3. Why we use it, and on what legal basis</h2>
+      <p>
+        Where the EU or UK GDPR (or a similar law) applies, we rely on these
+        legal bases:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>Purpose</th>
+            <th>Legal basis</th>
+          </tr>
+          <tr>
+            <td>
+              Creating your account, writing your readings, keeping your
+              journal, credits and purchases
+            </td>
+            <td>Performance of our contract with you</td>
+          </tr>
+          <tr>
+            <td>Reading memory across readings</td>
+            <td>Contract; you can switch it off at any time</td>
+          </tr>
+          <tr>
+            <td>Face readings (photo of your face)</td>
+            <td>
+              Your explicit consent, given in the app before the first face
+              reading (GDPR Art. 9(2)(a) where the photo counts as special
+              category data)
+            </td>
+          </tr>
+          <tr>
+            <td>Usage analytics</td>
+            <td>
+              In the EEA, the UK and Switzerland, your consent in Google's
+              consent form; analytics runs only if your choices there allow
+              it. Elsewhere, our legitimate interest in understanding how the
+              app is used
+            </td>
+          </tr>
+          <tr>
+            <td>Personalised ads</td>
+            <td>
+              In the EEA, the UK and Switzerland, your consent in Google's
+              consent form; ads are personalised only if your choices there
+              allow it, and otherwise they are not. Elsewhere, our legitimate
+              interest in funding the free tier, and you can opt out at any
+              time (see section 9). Ads on iPhone are always
+              non-personalised.
+            </td>
+          </tr>
+          <tr>
+            <td>Push notifications</td>
+            <td>Your consent through the system permission</td>
+          </tr>
+          <tr>
+            <td>
+              Crash reports, security, preventing abuse of free credits and
+              rewarded ads, keeping a record of account deletions
+            </td>
+            <td>Our legitimate interest in a working, safe and fair app</td>
+          </tr>
+          <tr>
+            <td>Tax and accounting records of purchases</td>
+            <td>Legal obligation</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        We do not use your data to make decisions that have legal or similarly
+        significant effects on you. Readings are generated by AI for
+        entertainment and reflection only.
+      </p>
 
-    <h2>4. Data Storage and Security</h2>
-    <p>Your data is stored securely using Supabase (hosted on AWS infrastructure) with encryption at rest and in transit. We implement row-level security policies to ensure users can only access their own data.</p>
-    <p>Locally saved favorites are stored on your device using encrypted local storage and are not transmitted to our servers.</p>
+      <h2 id="photos">4. Photos</h2>
+      <ul>
+        <li>
+          Photos are sent from the app to our server and on to the AI provider
+          that writes the reading. They are not saved in our database or file
+          storage; only the reading text and the fact that a photo was used are
+          saved.
+        </li>
+        <li>
+          Palm and face photos go only to Anthropic. Coffee cup photos go to
+          Moonshot AI or to Anthropic. The journal summary of a photo reading
+          is also written by Anthropic.
+        </li>
+        <li>
+          Anthropic deletes the photos it receives within 30 days, unless it
+          flags one under its usage policy. Moonshot AI may keep a coffee cup
+          photo while our account with it is active and may use it to improve
+          its models.
+        </li>
+        <li>
+          With reading memory on, the one-sentence summary of an earlier
+          reading, including a photo reading, can be part of a later reading
+          that another provider writes. The photo itself never is.
+        </li>
+        <li>
+          The face reading does not identify you, verify who you are, or build
+          a face template. It produces a written interpretation only. We ask
+          for your explicit consent before the first face reading. To withdraw
+          it, stop using face readings or delete your account.
+        </li>
+      </ul>
 
-    <h2>5. Third-Party Services</h2>
-    <p>We use the following third-party services:</p>
-    <ul>
-      <li><strong>Firebase Analytics & Crashlytics:</strong> For app performance monitoring and crash reporting</li>
-      <li><strong>Google AdMob:</strong> For displaying advertisements to free-tier users. AdMob may collect device identifiers for ad personalization. You can opt out of personalized ads in your device settings.</li>
-      <li><strong>RevenueCat:</strong> For managing premium subscriptions</li>
-      <li><strong>Supabase:</strong> For secure data storage and authentication</li>
-    </ul>
+      <section id="processors">
+      <h2>5. Who processes your data for us</h2>
+      <p>
+        We share personal data only with the providers below, so that they can
+        run Sezgi for us. Some of them may also use it for their own purposes,
+        as explained below for Moonshot AI, DeepSeek and Google's advertising.
+        We do not sell your personal data.
+      </p>
+      <h3>AI providers that write readings</h3>
+      <p>
+        When you ask for a reading, our server sends the provider the text you
+        typed, the choices you made, the details the reading needs (for some
+        readings your first name and birth details, and with reading memory
+        on, short notes from earlier readings) and, for photo readings, the
+        photo. We do not send your email address or your account ID to AI
+        providers. Which provider writes a reading depends on the reading
+        type, whether you have Premium, tests we run, and which providers are
+        available at that moment.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>Provider</th>
+            <th>What it receives</th>
+            <th>Where</th>
+          </tr>
+          <tr>
+            <td>Anthropic, PBC (Claude)</td>
+            <td>
+              Most Premium text readings, all palm and face readings, the
+              backup for coffee cup readings, and the backup when the
+              free-tier providers fail.
+              Also writes the journal summaries of photo, combo, deep and
+              Premium readings, and of other readings when DeepSeek is
+              unavailable.
+            </td>
+            <td>
+              United States, where Anthropic stores data; a request may also
+              be processed in Europe, Asia or Australia
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Hangzhou DeepSeek Artificial Intelligence Co., Ltd. (DeepSeek)
+            </td>
+            <td>
+              Free text readings; the text of finished free text readings
+              (such as tarot, dream or crystal ball readings) to write the
+              short summary for your journal; and the daily horoscope, which
+              contains no data about you. Never photos. DeepSeek does not
+              write the summaries of photo, combo, deep or Premium readings;
+              Anthropic does.
+            </td>
+            <td>People's Republic of China</td>
+          </tr>
+          <tr>
+            <td>Moonshot AI Pte. Ltd. (Kimi)</td>
+            <td>
+              Coffee cup photos with the related prompt; free text readings
+              when both DeepSeek and Anthropic fail; and the daily horoscope
+              when DeepSeek fails (no data about you).
+            </td>
+            <td>Singapore</td>
+          </tr>
+          <tr>
+            <td>
+              Jingsheng Hengxing Technology Pte. Ltd. (Z.ai, GLM models)
+            </td>
+            <td>
+              In limited tests: some free tarot and dream readings, and some
+              Premium text readings. Text only, never photos.
+            </td>
+            <td>
+              Singapore, where Z.ai says it generally processes API data;
+              companies in its group may also handle it
+            </td>
+          </tr>
+          <tr>
+            <td>Alibaba Cloud (Singapore) Private Limited (Model Studio, Qwen)</td>
+            <td>
+              In a limited test: some free tarot and dream readings, through
+              the international (Singapore) endpoint. Text only, never photos.
+            </td>
+            <td>
+              Singapore, where Alibaba Cloud stores the request; the model may
+              run on its servers in other countries outside mainland China
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        Anthropic, Z.ai and Alibaba Cloud process what we send them under data
+        processing terms and say they do not use it to train their models.
+        Moonshot AI's terms allow it to use the content it receives to improve
+        its services, including its models, unless agreed otherwise in
+        writing, and DeepSeek's terms for developers make no commitment either
+        way. That is one reason we never send AI providers your email address
+        or account ID, and why palm and face photos go only to Anthropic.
+      </p>
 
-    <h2>6. Advertising</h2>
-    <p>Free-tier users may see advertisements served by Google AdMob. You can watch optional reward ads to earn extra readings. Ad-related data collection follows Google's advertising policies. Premium users enjoy an ad-free experience.</p>
+      <h3>Other service providers</h3>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>Provider</th>
+            <th>Purpose</th>
+            <th>Where</th>
+          </tr>
+          <tr>
+            <td>Supabase</td>
+            <td>Database, sign-in and server functions</td>
+            <td>
+              Database in Frankfurt, Germany (AWS eu-central-1); server
+              functions run in the region nearest to you
+            </td>
+          </tr>
+          <tr>
+            <td>Google: Firebase Crashlytics</td>
+            <td>Crash reports</td>
+            <td>United States and other Google locations</td>
+          </tr>
+          <tr>
+            <td>Google: Firebase Analytics</td>
+            <td>Usage analytics (with your consent where required)</td>
+            <td>United States and other Google locations</td>
+          </tr>
+          <tr>
+            <td>Google: Firebase Cloud Messaging</td>
+            <td>Delivering push notifications</td>
+            <td>United States and other Google locations</td>
+          </tr>
+          <tr>
+            <td>Google: AdMob and the User Messaging Platform</td>
+            <td>
+              Showing ads to free users and asking for consent. Google acts as
+              an independent controller for some advertising processing; see
+              <a href="https://policies.google.com/technologies/partner-sites"
+                >how Google uses data from partner apps</a
+              >.
+            </td>
+            <td>United States and other Google locations</td>
+          </tr>
+          <tr>
+            <td>Google Sign-In, Sign in with Apple</td>
+            <td>Optional sign-in</td>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <td>RevenueCat, Inc.</td>
+            <td>
+              Managing subscriptions and packs. RevenueCat receives your account
+              ID and purchase records from the store.
+            </td>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <td>Google Play, Apple App Store</td>
+            <td>
+              Payments, refunds and app delivery, under their own privacy
+              policies
+            </td>
+            <td>Worldwide</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        We may also disclose data if the law requires it, to protect people's
+        safety, or to a successor if Sezgi is sold or transferred, in which
+        case this policy continues to apply.
+      </p>
 
-    <h2>7. Children's Privacy</h2>
-    <p>Sezgi is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+      </section>
 
-    <h2>8. Data Retention and Deletion</h2>
-    <p>Your reading history is retained as long as your account exists. You can delete your account at any time through the app settings, which will permanently remove all your data from our servers within 30 days.</p>
-    <p>Locally saved favorites are removed when you uninstall the app or clear app data.</p>
+      <h2 id="transfers">6. International transfers</h2>
+      <p>
+        Sezgi is run from Canada and our database is in Germany. The AI
+        providers in section 5 are in the United States, the People's Republic
+        of China and Singapore, and Anthropic may also process a request in
+        Europe, Asia or Australia. Our other service providers are mainly in
+        the United States. These countries may not offer the same protection
+        as yours.
+      </p>
+      <p>
+        Where the law of your country requires a transfer mechanism, Anthropic
+        and Alibaba Cloud provide data processing terms that include the
+        European Commission's standard contractual clauses, with the UK
+        addendum, and Z.ai provides data processing terms for API customers.
+        DeepSeek and Moonshot AI do not publish data processing terms. For
+        every provider we limit what it receives as described in section 5,
+        we never send an AI provider your email address or account ID, and
+        all transfers are encrypted in transit.
+      </p>
 
-    <h2>9. Your Rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-      <li>Access your personal data</li>
-      <li>Request deletion of your account and data</li>
-      <li>Opt out of personalized advertising</li>
-      <li>Export your data</li>
-    </ul>
+      <h2 id="storage">7. Storage and security</h2>
+      <ul>
+        <li>
+          Our database encrypts data at rest and all connections use TLS.
+          Access rules in the database let each account read only its own
+          data.
+        </li>
+        <li>
+          On your device, Sezgi keeps settings, a cache and readings you saved
+          in the app's private storage. The app does not add its own
+          encryption to this storage; on a phone that is not rooted or
+          jailbroken, other apps cannot read it. It is removed when you delete
+          your account, clear the app's data or uninstall the app.
+        </li>
+        <li>No method of storage or transfer is completely secure.</li>
+      </ul>
 
-    <h2>10. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or by updating the "Last updated" date above.</p>
+      <h2 id="retention">8. How long we keep data</h2>
+      <ul>
+        <li>
+          Account, profile, credits and settings: until you delete your
+          account.
+        </li>
+        <li>
+          Readings and their summaries: until you delete them with your
+          account, and at most 24 months after each reading, when they are
+          deleted automatically.
+        </li>
+        <li>
+          Photos: not stored by us; our server holds a photo only while the
+          reading is written. The AI provider that receives it keeps it under
+          its own terms (see section 4).
+        </li>
+        <li>
+          Usage and cost logs for readings, rewarded-ad records and push
+          tokens: until you delete your account.
+        </li>
+        <li>
+          Record of an account deletion (the former account ID, time, and the
+          IP address of the request): kept for 24 months after the deletion to
+          show that we handled the request. The IP address is removed from it
+          after 90 days.
+        </li>
+        <li>
+          Database backups: deleted data can remain in encrypted backups for a
+          short time until they are overwritten.
+        </li>
+        <li>
+          Crash reports: kept by Firebase Crashlytics for up to 90 days.
+          Analytics events: kept for the retention period set in our Google
+          Analytics account, at most 14 months.
+        </li>
+        <li>
+          Purchase records held by RevenueCat and the stores: kept by them as
+          long as needed for billing, tax and fraud prevention. Deleting your
+          Sezgi account does not delete these records automatically; ask us
+          and we will request deletion from RevenueCat.
+        </li>
+      </ul>
 
-    <h2>11. Contact Us</h2>
-    <p>If you have questions about this Privacy Policy, please contact us at:</p>
-    <p><strong>Email:</strong> yinyangstudio.app@gmail.com</p>
-    <p><strong>Developer:</strong> Yin&Yang Studio</p>
-  </div>
-</body>
+      <h2 id="rights">9. Your choices and rights</h2>
+      <h3>In the app</h3>
+      <ul>
+        <li>
+          Export your data: You &rarr; Settings &rarr; Export my data.
+        </li>
+        <li>
+          Delete your account: You &rarr; Settings &rarr; Delete account.
+          You can also ask us to delete it without the app; see
+          <a href="delete-account.html">how to delete your account</a>.
+        </li>
+        <li>
+          Turn reading memory off: You &rarr; Settings &rarr; Reading memory.
+        </li>
+        <li>
+          In the EEA, the UK and Switzerland, change or withdraw your choice
+          for analytics and personalised ads at any time in You &rarr; Settings
+          &rarr; Privacy choices, or Settings &rarr; How ads work &rarr; Manage
+          ad consent. Your new choice applies from then on. Anywhere, you can
+          limit personalised ads by resetting or deleting your device's
+          advertising ID in your phone's settings. Turn notifications off in
+          Settings or in your phone's settings.
+        </li>
+      </ul>
+      <p>
+        To use any right below, email us at the address in section 1. We
+        answer within 30 days, or sooner where the law requires. We may need
+        to confirm that the account is yours, for example by asking you to send
+        the request from the app. You will not be treated differently for using
+        your rights.
+      </p>
+      <h3>EU, EEA, UK and Switzerland</h3>
+      <p>
+        You have the right to access, correct, delete, restrict and port your
+        data, to object to processing based on legitimate interests, and to
+        withdraw consent at any time (without affecting earlier processing).
+        You can complain to the data protection authority where you live or
+        work.
+      </p>
+      <h3>United States</h3>
+      <p>
+        Depending on your state (including California, Colorado, Connecticut,
+        Virginia, Utah, Texas, Oregon and others with similar laws), you can
+        ask to know, access, correct and delete your personal data, and to get
+        a copy. We do not sell personal data. Personalised advertising through
+        AdMob may count as "sharing" or "targeted advertising"; you can opt out
+        by deleting or resetting your device's advertising ID or turning off
+        ads personalisation in your phone's settings, through a privacy choice
+        in the app where one is shown, or by emailing us. Face photos are used only to write the reading you ask
+        for and are not stored. If we refuse a request, you can appeal by
+        replying to our answer.
+      </p>
+      <h3>Canada (including Quebec)</h3>
+      <p>
+        Under PIPEDA and Quebec's Law 25 you can access and correct your
+        personal information, withdraw consent, and ask for your data in a
+        structured, commonly used format. You can complain to the Office of
+        the Privacy Commissioner of Canada or, in Quebec, the Commission
+        d'accès à l'information. The person responsible for personal
+        information is named in section 1.
+      </p>
+      <h3>Brazil</h3>
+      <p>
+        Under the LGPD you can confirm whether we process your data, access,
+        correct, anonymise, block, delete and port it, learn who we share it
+        with, and withdraw consent. You can complain to the ANPD.
+      </p>
+      <h3>Türkiye</h3>
+      <p>
+        Under KVKK (Law No. 6698), Article 11, you can learn whether your data
+        is processed, ask for information about it, learn the purpose and the
+        recipients in Türkiye and abroad, ask for correction or deletion, object
+        to results produced solely by automated analysis, and claim
+        compensation for unlawful processing. You can complain to the Personal
+        Data Protection Authority (KVKK).
+      </p>
+      <h3>India</h3>
+      <p>
+        Under the Digital Personal Data Protection Act, 2023, you can ask for a
+        summary of your data and who it is shared with, correct, complete or
+        erase it, withdraw consent, nominate someone to act for you, and raise
+        a grievance with us at the address in section 1. If you are not
+        satisfied, you can approach the Data Protection Board of India.
+      </p>
+      <h3>Japan</h3>
+      <p>
+        Under the APPI you can ask us to disclose, correct, add to, delete, or
+        stop using or providing your data. Some providers in section 5 are in
+        foreign countries; you can ask us for information about their data
+        protection systems and the measures they take.
+      </p>
+
+      <h2 id="children">10. Children</h2>
+      <p>
+        Sezgi is not for children. You must be at least 13, or older where your
+        country requires it to use an app like Sezgi without a parent's
+        consent (for example 16 in some EU countries, and 18 in India). We do
+        not knowingly collect data from younger children. If you think a child
+        has used Sezgi, contact us and we will delete the account.
+      </p>
+
+      <h2 id="changes">11. Changes to this policy</h2>
+      <p>
+        When we change this policy we update the date at the top. If a change
+        is significant, for example a new kind of data or a new provider, we
+        will tell you in the app before it applies.
+      </p>
+
+      <h2 id="contact">12. Contact</h2>
+      <p>
+        Questions, requests and complaints: use the contact details in section
+        1.
+      </p>
+    </div>
+  </body>
 </html>
