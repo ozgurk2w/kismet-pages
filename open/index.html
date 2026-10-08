@@ -3,186 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sezgi — AI Fortune & Tarot</title>
-  <meta name="description" content="Open in the Sezgi app, or download from Google Play.">
+  <title>Sezgi: tarot, coffee cup reading and your horoscope</title>
+  <meta name="description" content="Tarot, coffee cup reading, dream interpretation and your daily horoscope, read by AI. Open the link in Sezgi or get it on Google Play.">
+  <meta name="theme-color" content="#E9E3D6">
   <link rel="icon" href="data:,">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sezgi">
+  <meta property="og:title" content="Sezgi: tarot, coffee cup reading and your horoscope">
+  <meta property="og:description" content="A line from a Sezgi reading was shared with you. Tarot, coffee cup, dreams and your daily horoscope, read by AI.">
+  <meta property="og:url" content="https://ozgurk2w.github.io/kismet-pages/open">
+  <meta property="og:image" content="https://ozgurk2w.github.io/kismet-pages/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sezgi: a fortune teller's table with tarot cards and a coffee cup">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sezgi: tarot, coffee cup reading and your horoscope">
+  <meta name="twitter:description" content="A line from a Sezgi reading was shared with you. Tarot, coffee cup, dreams and your daily horoscope, read by AI.">
+  <meta name="twitter:image" content="https://ozgurk2w.github.io/kismet-pages/assets/og.jpg">
+  <meta name="twitter:image:alt" content="Sezgi: a fortune teller's table with tarot cards and a coffee cup">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Space Grotesk', sans-serif;
-      background: #0A0A0F;
-      color: #E8E8F0;
-      overflow: hidden;
+    :root {
+      --paper: #E9E3D6;
+      --card: #F5EEDF;
+      --ink: #16181D;
+      --ink-muted: #625D55;
+      --tomato: #C8282B;
+      --on-tomato: #FFFFFF;
+      --hairline: rgba(22, 24, 29, 0.16);
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #081A31;
+        --card: #0C2443;
+        --ink: #F5EEDF;
+        --ink-muted: #B9B1A3;
+        --tomato: #E23036;
+        --on-tomato: #FFFFFF;
+        --hairline: rgba(245, 238, 223, 0.18);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100%; }
     body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 24px;
-      position: relative;
-    }
-    body::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .container {
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px 16px;
       text-align: center;
-      max-width: 360px;
-      position: relative;
-      z-index: 1;
     }
-    .eye {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 28px;
-      border: 1.5px solid rgba(0, 240, 255, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 24px rgba(0, 240, 255, 0.15);
-    }
-    .eye::after {
-      content: '';
-      width: 12px;
-      height: 12px;
-      background: #00F0FF;
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
-    }
+    .container { width: 100%; max-width: 420px; }
     h1 {
-      font-size: 2rem;
-      letter-spacing: 0.04em;
-      font-weight: 500;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--tomato);
+      letter-spacing: 0.01em;
       margin-bottom: 8px;
-      color: #E8E8F0;
     }
-    .subtitle {
-      color: #6E7080;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
+    .tagline {
+      color: var(--ink);
+      font-size: 1.05rem;
+      line-height: 1.45;
+      margin-bottom: 24px;
     }
-    p.body {
-      color: #9A9CA8;
+    .shared {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      padding: 20px 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 0 var(--hairline);
+      overflow-wrap: anywhere;
+    }
+    .shared-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-bottom: 10px;
+    }
+    .shared-quote {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      font-style: italic;
+      quotes: '\201C' '\201D';
+    }
+    .shared-quote::before { content: open-quote; }
+    .shared-quote::after { content: close-quote; }
+    .shared-card {
+      margin-top: 10px;
       font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 28px;
+      color: var(--tomato);
+      font-weight: 700;
     }
+    .message {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .btn {
       display: inline-block;
-      padding: 14px 28px;
-      background: #00F0FF;
-      color: #0A0A0F;
-      text-decoration: none;
+      min-width: 240px;
+      padding: 14px 24px;
       border-radius: 4px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: opacity 0.2s;
-      box-shadow: 0 0 24px rgba(0, 240, 255, 0.2);
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-secondary {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 12px 20px;
-      color: #6E7080;
       text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
     }
-    .btn-secondary:hover { color: #9A9CA8; }
+    .btn-primary { background: var(--tomato); color: var(--on-tomato); }
+    .btn-secondary { color: var(--ink); border: 1px solid var(--hairline); }
+    .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+    [hidden] { display: none !important; }
+    .ai {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin-top: 28px;
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
     footer {
-      position: absolute;
-      bottom: 24px;
-      color: #4A4C58;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin-top: 24px;
+      color: var(--ink-muted);
       font-size: 0.75rem;
-      letter-spacing: 0.04em;
     }
-    .hint { margin-top: 24px; color: #4A4C58; font-size: 0.8rem; line-height: 1.5; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="eye" aria-hidden="true"></div>
-    <h1>SEZGI</h1>
-    <p class="subtitle">AI Fortune Readings</p>
-    <p class="body" id="message">Open this link inside the Sezgi app, or install it to continue.</p>
-    <a class="btn" id="cta" href="https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet">Get on Google Play</a>
-    <p class="hint" id="hint"></p>
-  </div>
-  <footer>&copy; 2026 Yin&amp;Yang Studio</footer>
+  <main class="container">
+    <h1>Sezgi</h1>
+    <p class="tagline" id="tagline">Tarot, coffee cup reading, dreams and your daily horoscope</p>
 
-  <script>
-    // App Links + custom scheme bounce.
-    //
-    // Android with app installed: this page never loads — the OS routes
-    //   the App Link directly into the app via the verified assetlinks.json.
-    // Android without app: this page loads → CTA goes to Play Store.
-    //   We also try `sezgi://` once on first load, harmless when not handled.
-    // iOS / Desktop: this page loads → message explains Android-only for now.
-    //
-    // Path mapping mirrors lib/core/utils/deep_link.dart:
-    //   /kismet-pages/open               → sezgi:///       (home)
-    //   /kismet-pages/open?ref=ABC       → sezgi:///?ref=ABC (referral)
-    //   /kismet-pages/open/burc/koc      → sezgi:///burc/koc (horoscope)
-    //   /kismet-pages/open/<fortune>     → sezgi:///<fortune>
-    (function() {
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = /android/.test(ua);
-      var isIOS = /iphone|ipad|ipod/.test(ua) && !window.MSStream;
+    <section class="shared" id="shared" hidden>
+      <p class="shared-label" id="shared-label"></p>
+      <blockquote class="shared-quote" id="shared-quote" hidden></blockquote>
+      <p class="shared-card" id="shared-card" hidden></p>
+    </section>
 
-      function appPathFromPagePath(rawPath) {
-        var prefix = '/kismet-pages/open';
-        if (rawPath === prefix || rawPath === prefix + '/') {
-          return '/';
-        }
-        if (rawPath.indexOf(prefix + '/') === 0) {
-          return rawPath.slice(prefix.length);
-        }
-        return null;
-      }
+    <p class="message" id="message">Open this link inside the Sezgi app, or install it to continue.</p>
+    <div class="actions">
+      <a class="btn btn-primary" id="cta" href="https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet">Get it on Google Play</a>
+      <a class="btn btn-secondary" id="open" href="#" hidden>Open in Sezgi</a>
+    </div>
+    <p class="ai" id="ai">Readings are written by AI, for reflection and entertainment.</p>
+    <footer>&copy; 2026 Yin&amp;Yang Studio</footer>
+  </main>
 
-      var appPath = appPathFromPagePath(window.location.pathname);
-      var query = window.location.search; // includes leading "?" or empty
-      var appUrl = appPath === null ? null : 'sezgi://' + appPath + query;
-
-      var storeUrl = 'https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet';
-      var cta = document.getElementById('cta');
-      var message = document.getElementById('message');
-      var hint = document.getElementById('hint');
-
-      if (isAndroid && appUrl !== null) {
-        // Try the custom scheme once. If the app handled it, the page
-        // unloads and the user lands inside the reading. If not, the
-        // CTA below remains tappable for Play Store install.
-        try { window.location.replace(appUrl); } catch (_) {}
-        message.textContent = 'Sezgi did not open. Tap below to install.';
-        hint.textContent = 'Already installed? Open the app, then return to this link.';
-      } else if (isAndroid) {
-        message.textContent = 'This Sezgi link is not valid. Tap below to install the app.';
-        hint.textContent = '';
-      } else if (isIOS) {
-        message.textContent = 'Sezgi is currently available on Android. iOS is on the way.';
-        cta.style.display = 'none';
-        hint.textContent = 'Bookmark this page — we will notify when iOS lands.';
-      } else {
-        message.textContent = 'Sezgi runs on Android. Open this link on your phone to continue.';
-        hint.textContent = '';
-      }
-    })();
-  </script>
+  <!-- Bounce, localization and shared-quote logic: assets/open.js
+       (checked by tools/test_open.js). -->
+  <script src="/kismet-pages/assets/open.js"></script>
 </body>
 </html>
