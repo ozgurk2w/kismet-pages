@@ -435,14 +435,20 @@
            retries on another Anthropic model), so the reading goes to that
            provider only. Production config 2026-10-08: all six readers
            enabled for build >= 189, readers.photo_readers empty (no reader
-           takes a photo). -->
+           takes a photo). The Moth (Alibaba Cloud, Qwen) was removed on
+           2026-10-08 with Alibaba (migration 20261011220100; QWEN_API_KEY
+           unset); no code calls Alibaba any more. The Compass (OpenAI
+           GPT-6 Luna) is added by migrations 20261011230000-230200,
+           resting until OPENAI_API_KEY is set, and is not in
+           readers.photo_readers. -->
       <p>
         Besides Sezgi's own voice, you can choose one of six AI readers for a
         text reading. Each reader is one provider's model, and a reading you
         give to a reader goes only to that provider: the Lamp to Anthropic
         (Claude), the Swallow to Moonshot AI (Kimi), the Quill to DeepSeek,
-        the Key to Z.ai (GLM), the Moth to Alibaba Cloud (Qwen) and the
-        Hourglass to Google (Gemini). Readers read text traditions only;
+        the Key to Z.ai (GLM), the Hourglass to Google (Gemini; it reads only
+        for people 18 or older) and the Compass to OpenAI (GPT).
+        Readers read text traditions only;
         photos never go to a reader you choose.
       </p>
       <!-- Each row names the company we contract with and where it says it
@@ -561,37 +567,6 @@
               companies in its group may also handle it
             </td>
           </tr>
-          <!-- Alibaba Cloud. Contracting entity: Alibaba Cloud (Singapore)
-               Private Limited for an account whose billing address is in
-               Canada (or another country not listed in the agreement).
-               https://www.alibabacloud.com/help/en/legal/latest/alibaba-cloud-international-website-membership-agreement
-               (2026-09-11). Location: dashscope-intl.aliyuncs.com is the
-               Singapore region, where request data and stored data stay, and
-               Singapore uses the "International" deployment scope.
-               https://www.alibabacloud.com/help/en/model-studio/regions
-               (2026-09-28). Alibaba describes international inference as
-               scheduled globally, excluding the Chinese mainland:
-               https://www.alibabacloud.com/help/en/maxcompute/product-overview/token-fee
-               No training on customer data:
-               https://help.aliyun.com/en/model-studio/privacy-notice ; DPA with
-               SCCs and the UK addendum:
-               https://www.alibabacloud.com/help/en/legal/latest/fe2cxg
-               OWNER_DECISION: confirm the billing address the Alibaba Cloud
-               account was registered with (Canada gives the entity above),
-               and that the Model Studio definition of the International scope
-               shown in the console still excludes the Chinese mainland. -->
-          <tr>
-            <td>Alibaba Cloud (Singapore) Private Limited (Model Studio, Qwen)</td>
-            <td>
-              Readings you give to the Moth and, in a limited test, some free
-              tarot and dream readings, through the international (Singapore)
-              endpoint. Text only, never photos.
-            </td>
-            <td>
-              Singapore, where Alibaba Cloud stores the request; the model may
-              run on its servers in other countries outside mainland China
-            </td>
-          </tr>
           <!-- Google (Gemini API, paid tier). Terms: Gemini API Additional
                Terms of Service, https://ai.google.dev/gemini-api/terms (last
                modified 2026-03-23). For Paid Services "Google" has the
@@ -628,6 +603,37 @@
               Any country where Google or its agents have facilities
             </td>
           </tr>
+          <!-- OpenAI. Contracting entity: OpenAI, LLC for a customer outside
+               the EEA and Switzerland ("If Customer is located in the UK or
+               anywhere else other than the EEA or Switzerland, OpenAI, LLC
+               will provide the Services"), Services Agreement
+               https://openai.com/policies/services-agreement/ and Data
+               Processing Addendum
+               https://openai.com/policies/data-processing-addendum/
+               (checked 2026-10-08). API data is not used to train or improve
+               OpenAI models unless the customer opts in; abuse-monitoring
+               logs are kept up to 30 days by default (longer only where the
+               law requires it or to protect the services); /v1/chat/
+               completions keeps no application state, and streamOpenAI sends
+               store: false (https://developers.openai.com/api/docs/guides/your-data,
+               checked 2026-10-08). Location: we call api.openai.com with no
+               data residency region; regional processing exists only for
+               projects set to the US or Europe, so the row names the United
+               States, OpenAI's home and default.
+               OWNER_DECISION: (1) confirm the API project has no data
+               residency region and the billing address is in Canada (the
+               entity above); (2) confirm data sharing with OpenAI is off in
+               the organization settings (it is off by default for the API).
+               Use: the Compass reader only (gpt-6-luna), text only. -->
+          <tr>
+            <td>OpenAI, LLC (GPT models)</td>
+            <td>
+              Readings you give to the Compass. Text only, never photos.
+            </td>
+            <td>
+              United States, where OpenAI processes API requests by default
+            </td>
+          </tr>
         </table>
       </div>
       <!-- OWNER_DECISION: Moonshot AI's terms let it use API content to
@@ -639,10 +645,10 @@
            terms from both, or keeping personal data away from them, would
            let the paragraph below say more. -->
       <p>
-        Anthropic, Z.ai, Alibaba Cloud and Google process what we send them
-        under data processing terms and say they do not use it to train their
-        models. Google keeps what it receives for up to 55 days to detect
-        abuse.
+        Anthropic, Z.ai, Google and OpenAI process what we send them under
+        data processing terms and say they do not use it to train
+        their models. Google keeps what it receives for up to 55 days and
+        OpenAI for up to 30 days to detect abuse.
         Moonshot AI's terms allow it to use the content it receives to improve
         its services, including its models, unless agreed otherwise in
         writing, and DeepSeek's terms for developers make no commitment either
@@ -728,7 +734,9 @@
            provider offers, from the sources cited in section 5:
            - Anthropic: DPA with EU SCCs (modules 2 and 3), UK addendum and
              Swiss addendum.
-           - Alibaba Cloud: DPA with EU SCCs and the UK addendum.
+           - OpenAI: Data Processing Addendum with EU SCCs and the UK
+             addendum (https://openai.com/policies/data-processing-addendum/);
+             verify before relying on it below.
            - Google (Gemini API, paid): Cloud Data Processing Addendum;
              verify its transfer clauses before relying on them below.
            - Z.ai: Data Processing Addendum for API Services; it promises
@@ -752,7 +760,7 @@
       </p>
       <p>
         Where the law of your country requires a transfer mechanism, Anthropic
-        and Alibaba Cloud provide data processing terms that include the
+        and OpenAI provide data processing terms that include the
         European Commission's standard contractual clauses, with the UK
         addendum; Google and Z.ai provide data processing terms for API
         customers.
