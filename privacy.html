@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy - Sezgi</title>
+    <!--
+      DRAFT for owner review (platform audit P-05, P-09, P-41).
+      Before publishing to the kismet-pages repo:
+        1. Fill the OPERATOR_BLOCK below (the only place with identity and
+           contact placeholders).
+        2. Have the transfer and regional-rights wording reviewed, and
+           resolve every OWNER_DECISION comment on this page.
+        3. Check the processor table still matches production
+           (python scripts/check_ai_processors.py) and bump "Last updated".
+           Each provider row cites the provider's own terms; re-check them.
+        4. Publish together with (or after) the app release that maps the
+           consent form's choices to Consent Mode and reads them through the
+           native com.yinyangstudio.kismet/tcf channel (platform audit P-04).
+           The consent statements in sections 2, 3 and 9 describe that
+           release; see the OWNER_DECISION in section 2.
+        5. Publish only after summarize-reading with _shared/summary_lane.ts
+           is deployed: the narrowed DeepSeek row in section 5 (no photo,
+           combo, deep or Premium summaries) is true only from that deploy.
+           Confirm it from the `lane=` audit line in the function logs.
+    -->
     <style>
       * {
         margin: 0;
@@ -96,7 +116,7 @@
     <div class="container">
       <a href="index.html" class="back">&larr; Back to Sezgi</a>
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated: October 10, 2026</p>
+      <p class="updated">Last updated: October 11, 2026</p>
 
       <p>
         This policy explains what the Sezgi app collects, why, who it is shared
@@ -105,6 +125,12 @@
       </p>
 
       <h2 id="who">1. Who runs Sezgi and how to reach us</h2>
+      <!-- OPERATOR_BLOCK: the owner fills in these three placeholders. This is
+           the only place in the policy that names the operator or a contact
+           address; every other section points here.
+           Owner decisions still open (see platform audit Wave 3):
+           - whether an EU and a UK representative (GDPR Art. 27) is appointed;
+             if so, add their name and address inside this block. -->
       <div class="operator">
         <p>
           Sezgi is operated by <strong>OZCANLAR (Ozgur Ozcan, sole proprietor)</strong>, Toronto, Ontario, Canada. We
@@ -120,6 +146,7 @@
           be reached at the same address.
         </p>
       </div>
+      <!-- /OPERATOR_BLOCK -->
 
       <h2 id="collect">2. What we collect</h2>
       <h3>Account</h3>
@@ -199,6 +226,18 @@
           Crash reports: device model, operating system, app version and the
           error, linked to your account ID so we can fix problems you hit.
         </li>
+        <!-- OWNER_DECISION: the consent statements in sections 2, 3 and 9
+             are true only for app builds that map the consent form's TCF
+             choices (Google vendor 755 and purposes 1, 3, 4, 7, 8 and 9) to
+             Consent Mode (lib/core/services/consent_signals.dart) and read
+             them through the native com.yinyangstudio.kismet/tcf channel
+             (MainActivity.kt, AppDelegate.swift). Builds 2.32.41 to 2.32.44,
+             installed today, grant every Consent Mode signal even after a
+             refusal. Publish this page with that release and consider
+             raising the minimum supported version once it is live, so older
+             builds update. If a US-states message is ever published in
+             AdMob, revisit "Elsewhere they are collected by default": that
+             release then turns analytics off for everyone who answers it. -->
         <li>
           Usage events (for example which features you open). In the EEA, the
           UK and Switzerland, where the law requires consent, Google's consent
@@ -333,14 +372,48 @@
           Palm and face photos go only to Anthropic, or to OpenAI when you
           choose the Compass reader for that reading. They never go to
           Moonshot AI, DeepSeek, Z.ai or Google. Coffee cup photos go to
-          Moonshot AI or to Anthropic, or to OpenAI when you choose the
-          Compass. The journal summary of a photo reading is written by
-          Anthropic.
+          OpenAI, Moonshot AI or Anthropic: a free coffee cup reading in
+          English, Turkish or Arabic goes to OpenAI first, and a coffee cup
+          reading you give to the Compass goes only to OpenAI. The journal
+          summary of a photo reading is written by Anthropic.
         </li>
+        <!-- Sources: Anthropic deletes API inputs and outputs within 30 days,
+             except content flagged under its Usage Policy (kept up to 2
+             years) (https://privacy.claude.com/en/articles/7996866,
+             2026-07-01). Moonshot AI
+             keeps "account, input, and payment information" while the
+             account is active and uses user content to optimize its models
+             (https://platform.kimi.ai/docs/agreement/userprivacy, 2025-04-30;
+             https://platform.kimi.ai/docs/agreement/modeluse, 2026-07-30).
+             OWNER_DECISION: keep the coffee cup test on Moonshot
+             (KIMI_IMAGE_CANARY_PERCENT) only if this disclosure is
+             acceptable, or get written terms from Moonshot first.
+             Round 9 #4 (owner decision C, 2026-10-11, config
+             house_locale_route, migration 20261011460000): a free solo
+             coffee cup reading in English, Turkish or Arabic leads with
+             OpenAI (gpt-6-luna) and falls to the route below (Moonshot,
+             then Anthropic) when OpenAI fails before its first token.
+             KIMI_IMAGE_CANARY_PERCENT has been 100 since 2026-10-01
+             (PROJECT.md): every coffee cup reading that is not combined
+             with another tradition, free or Premium, goes to Moonshot first;
+             Anthropic writes it when Moonshot fails before its first token
+             or the quality fallback rejects Moonshot's reading. This page
+             therefore does not call the coffee cup route a limited test.
+             OpenAI (the Compass, and free coffee cups in en/tr/ar): API
+             data is not used for training unless the customer
+             opts in; abuse-monitoring logs up to 30 days by default, longer
+             only where the law requires it or to protect the services; an
+             image its CSAM classifier flags is kept for manual review;
+             streamOpenAI sends store: false
+             (https://developers.openai.com/api/docs/guides/your-data and
+             https://openai.com/policies/data-processing-addendum/, re-checked
+             2026-10-10, wording unchanged). Images reach OpenAI as image_url
+             data URLs in /v1/chat/completions (openAiUserContent); no Files
+             API upload. -->
         <li>
           Anthropic deletes the photos it receives within 30 days, unless it
           flags one under its usage policy. OpenAI uses a photo only to write
-          the reading you asked the Compass for, does not use it to train its
+          the reading it was sent for, does not use it to train its
           models, and keeps it for up to 30 days to detect abuse, unless the
           law requires it to keep it longer; it processes it in the United
           States. Moonshot AI may keep a coffee cup photo while our account
@@ -359,6 +432,8 @@
         </li>
       </ul>
 
+      <!-- scripts/check_ai_processors.py reads this section: every provider
+           host the edge functions call must be named inside it. -->
       <section id="processors">
       <h2>5. Who processes your data for us</h2>
       <p>
@@ -378,6 +453,18 @@
         type, its language, whether you have Premium, the reader you choose,
         tests we run, and which providers are available at that moment.
       </p>
+      <!-- Readers: docs/readers/00_spec.md and supabase/functions/_shared/
+           readers.ts. A chosen reader has no fallback chain (only the Lamp
+           retries on another Anthropic model), so the reading goes to that
+           provider only. Production config 2026-10-08: all six readers
+           enabled for build >= 189. The Moth (Alibaba Cloud, Qwen) was removed on
+           2026-10-08 with Alibaba (migration 20261011220100; QWEN_API_KEY
+           unset); no code calls Alibaba any more. The Compass (OpenAI
+           GPT-6 Luna) is added by migrations 20261011230000-230300.
+           readers.photo_readers: the Swallow and the Lamp (20261011140000),
+           the Compass (20261011380000). Palm and face photos: Anthropic and
+           OpenAI only (_shared/body_photo_guard.ts), whatever photo_readers
+           lists. -->
       <p>
         Besides Sezgi's own voice, you can choose one of six AI readers for a
         reading. Each reader is one provider's model, and a reading you
@@ -390,6 +477,11 @@
         give to a reader goes only to that reader's provider. Palm and face
         photos never go to the Swallow, the Quill, the Key or the Hourglass.
       </p>
+      <!-- Each row names the company we contract with and where it says it
+           processes API data, from the provider's own terms, privacy policy
+           or DPA. The comment above each row gives the source and the date it
+           was checked (2026-10-05). Re-check before publishing and whenever a
+           provider's terms change. -->
       <div class="table-wrap">
         <table>
           <tr>
@@ -397,6 +489,17 @@
             <th>What it receives</th>
             <th>Where</th>
           </tr>
+          <!-- Anthropic. Contracting entity: Anthropic, PBC for a customer
+               outside the EEA, Switzerland and the UK (Anthropic Ireland,
+               Limited inside them); the operator is in Canada.
+               https://www.anthropic.com/legal/commercial-terms (effective
+               2025-06-17). Location: data is stored in the US; by default
+               requests may be routed to the US, Europe, Asia and Australia
+               unless an inference geography is chosen, and ai_client.ts sets
+               none. https://privacy.claude.com/en/articles/7996890 (2026-06-15).
+               No training on API content (commercial terms); DPA with SCCs,
+               UK and Swiss addenda:
+               https://www.anthropic.com/legal/data-processing-addendum -->
           <tr>
             <td>Anthropic, PBC (Claude)</td>
             <td>
@@ -415,13 +518,25 @@
               be processed in Europe, Asia or Australia
             </td>
           </tr>
+          <!-- DeepSeek. Contracting entity: Hangzhou DeepSeek Artificial
+               Intelligence Co., Ltd., PRC law; the developer is the
+               controller for its end users and no data processing terms are
+               offered.
+               https://cdn.deepseek.com/policies/en-US/deepseek-open-platform-terms-of-service.html
+               (released 2026-04-22). Location: personal data is collected,
+               processed and stored in the PRC.
+               https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html
+               (2026-02-10). Summary lane: supabase/functions/_shared/
+               summary_lane.ts keeps photo, combo, deep and Premium readings
+               on Anthropic. -->
           <tr>
             <td>
               Hangzhou DeepSeek Artificial Intelligence Co., Ltd. (DeepSeek)
             </td>
             <td>
-              Free text readings other than tarot and dreams; readings you
-              give to the Quill; the text of finished free text readings
+              Free text readings other than tarot and dreams (in English,
+              Turkish and Arabic only when OpenAI cannot write them);
+              readings you give to the Quill; the text of finished free text readings
               (such as tarot, dream or crystal ball readings) to write the
               short summary for your journal; and the daily horoscope, which
               contains no data about you. Never photos. DeepSeek does not
@@ -430,19 +545,46 @@
             </td>
             <td>People's Republic of China</td>
           </tr>
+          <!-- Moonshot AI. Contracting entity: Moonshot AI PTE. LTD.,
+               Singapore law; it may use API content to provide, develop and
+               improve its services unless agreed otherwise in writing.
+               https://platform.kimi.ai/docs/agreement/modeluse (2026-07-30).
+               Location: data is stored on servers in Singapore.
+               https://platform.kimi.ai/docs/agreement/userprivacy
+               (2025-04-30). platform.moonshot.ai redirects to platform.kimi.ai,
+               whose docs use the api.moonshot.ai endpoint we call.
+               Use (docs/ai/MODEL_ROUTING_2026-10.md, 2026-10-08): free
+               tarot and dream readings right after the OpenAI lead (config
+               house_route_overrides behind house_locale_route, round 9 #4), is
+               the free quality fallback (config quality_fallback.free_text =
+               reader_swallow), the last leg of the free chain and of the
+               free summary lane, the daily horoscope fallback, the coffee
+               cup canary (KIMI_IMAGE_CANARY_PERCENT) and the Swallow. -->
           <tr>
             <td>Moonshot AI Pte. Ltd. (Kimi)</td>
             <td>
-              Free tarot and dream readings; a new version of a free text
-              reading that failed our quality check; free text readings when
+              Free tarot and dream readings when OpenAI cannot write them; a
+              new version of a free text reading that failed our quality
+              check; free text readings when
               both DeepSeek and Anthropic fail; readings you give to the
-              Swallow; coffee cup photos with the related prompt; journal
+              Swallow; coffee cup photos with the related prompt (for a free
+              reading in English, Turkish or Arabic only when OpenAI cannot
+              write it); journal
               summaries of free readings when DeepSeek and Anthropic are
               unavailable; and the daily horoscope when DeepSeek fails (no
               data about you).
             </td>
             <td>Singapore</td>
           </tr>
+          <!-- Z.ai. Contracting entity: JINGSHENG HENGXING TECHNOLOGY
+               PTE. LTD., Singapore law; API content is not used to develop or
+               improve the services unless agreed.
+               https://docs.z.ai/legal-agreement/terms-of-use (2026-04-14).
+               Location: "Customer Data is generally processed in Singapore";
+               group companies are "typically located in Singapore"; API
+               content is processed in real time and not stored (Data
+               Processing Addendum for API Services in
+               https://docs.z.ai/legal-agreement/privacy-policy, 2025-09-29). -->
           <tr>
             <td>
               Jingsheng Hengxing Technology Pte. Ltd. (Z.ai, GLM models)
@@ -457,6 +599,33 @@
               companies in its group may also handle it
             </td>
           </tr>
+          <!-- Google (Gemini API, paid tier). Terms: Gemini API Additional
+               Terms of Service, https://ai.google.dev/gemini-api/terms (last
+               modified 2026-03-23). For Paid Services "Google" has the
+               meaning in the Google Cloud terms; for a Canadian billing
+               address that is Google Cloud Canada Corporation, Toronto
+               (https://cloud.google.com/terms/google-entity, checked
+               2026-10-08). Paid Services: Google does not use prompts or
+               responses to improve its products; it logs them "for a limited
+               period of time, solely for" detecting Prohibited Use Policy
+               violations and required legal disclosures, and they "may be
+               stored transiently or cached in any country in which Google or
+               its agents maintain facilities"; processed under the Data
+               Processing Addendum for Products Where Google is a Data
+               Processor (https://cloud.google.com/terms/data-processing-addendum).
+               Abuse-monitoring retention: 55 days
+               (https://ai.google.dev/gemini-api/docs/usage-policies, updated
+               2026-06-09). Unpaid quota outside the EEA, Switzerland and the
+               UK may be used to improve Google's products and read by human
+               reviewers, so this row holds only while the GEMINI_API_KEY
+               project has an active Cloud Billing account.
+               OWNER_DECISION: (1) confirm billing is active on that project
+               and its billing address is in Canada; (2) the same terms say
+               "You also will not use the Services as part of a website,
+               application, or other service ... that is directed towards or
+               is likely to be accessed by individuals under the age of 18",
+               which section 10 meets: since 2026-10-09 Sezgi is for adults
+               18+ only, and the Hourglass keeps its own 18+ server check. -->
           <tr>
             <td>Google Cloud Canada Corporation (Gemini API)</td>
             <td>
@@ -466,12 +635,47 @@
               Any country where Google or its agents have facilities
             </td>
           </tr>
+          <!-- OpenAI. Contracting entity: OpenAI, LLC for a customer outside
+               the EEA and Switzerland ("If Customer is located in the UK or
+               anywhere else other than the EEA or Switzerland, OpenAI, LLC
+               will provide the Services"), Services Agreement
+               https://openai.com/policies/services-agreement/ and Data
+               Processing Addendum
+               https://openai.com/policies/data-processing-addendum/
+               (checked 2026-10-08). API data is not used to train or improve
+               OpenAI models unless the customer opts in; abuse-monitoring
+               logs are kept up to 30 days by default (longer only where the
+               law requires it or to protect the services); /v1/chat/
+               completions keeps no application state, and streamOpenAI sends
+               store: false (https://developers.openai.com/api/docs/guides/your-data,
+               checked 2026-10-08). Location: we call api.openai.com with no
+               data residency region; regional processing exists only for
+               projects set to the US or Europe, so the row names the United
+               States, OpenAI's home and default.
+               OWNER_DECISION: (1) confirm the API project has no data
+               residency region and the billing address is in Canada (the
+               entity above); (2) confirm data sharing with OpenAI is off in
+               the organization settings (it is off by default for the API).
+               Use: the Compass reader (gpt-6-luna): text, and coffee, palm
+               and face photos (owner decision 2026-10-10); and the house's
+               free readings through config house_locale_route (owner
+               decisions C of 2026-10-10 and 2026-10-11, migrations
+               20261011410000 and 20261011460000): every free solo text
+               reading in English, Turkish and Arabic, free tarot and dream
+               readings in every other language, and free solo coffee cup
+               photo readings in English, Turkish and Arabic. The house route
+               never sends OpenAI a palm or face photo (house_route.ts
+               houseLocaleLeadModels drops them; body_photo_guard.ts). -->
           <tr>
             <td>OpenAI, LLC (GPT models)</td>
             <td>
-              Free text readings in Turkish and Arabic (never photos);
+              Free text readings, depending on the reading type and its
+              language (every free text reading in English, Turkish and
+              Arabic; free tarot and dream readings in the other languages);
+              free coffee cup photo readings in English, Turkish and Arabic;
               readings you give to the Compass, including coffee cup, palm and
               face photos when you choose the Compass for a photo reading.
+              Never a palm or face photo you did not give to the Compass.
             </td>
             <td>
               United States, where OpenAI processes API requests by default
@@ -479,6 +683,14 @@
           </tr>
         </table>
       </div>
+      <!-- OWNER_DECISION: Moonshot AI's terms let it use API content to
+           improve its services unless agreed otherwise in writing, and
+           DeepSeek's developer terms make no commitment either way. Google
+           Play's "service provider" exception covers only processing on the
+           developer's behalf and instructions, so see PLAY_CONSOLE_FORMS.md
+           (Data safety notes) before submitting the form. Getting written
+           terms from both, or keeping personal data away from them, would
+           let the paragraph below say more. -->
       <p>
         Anthropic, Z.ai, Google and OpenAI process what we send them under
         data processing terms and say they do not use it to train
@@ -566,6 +778,25 @@
       </section>
 
       <h2 id="transfers">6. International transfers</h2>
+      <!-- OWNER_DECISION (legal review before publishing). What each AI
+           provider offers, from the sources cited in section 5:
+           - Anthropic: DPA with EU SCCs (modules 2 and 3), UK addendum and
+             Swiss addendum.
+           - OpenAI: Data Processing Addendum with EU SCCs and the UK
+             addendum (https://openai.com/policies/data-processing-addendum/);
+             verify before relying on it below.
+           - Google (Gemini API, paid): Cloud Data Processing Addendum;
+             verify its transfer clauses before relying on them below.
+           - Z.ai: Data Processing Addendum for API Services; it promises
+             "legally recognized transfer mechanisms" but names none.
+           - DeepSeek and Moonshot AI: no published data processing terms or
+             SCCs.
+           For users in the EEA, the UK and Switzerland, decide between
+           signing SCCs with DeepSeek and Moonshot AI, relying on a
+           documented GDPR Art. 49 derogation, or routing those users away
+           from these two providers, and then align the paragraph below.
+           Also confirm the KVKK standard-contract notification (Türkiye) and
+           the APPI information duty (Japan) for each provider. -->
       <p>
         Sezgi is run from Canada and our database is in Germany. The AI
         providers in section 5 are in the United States, Canada, the People's
