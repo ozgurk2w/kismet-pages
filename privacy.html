@@ -257,9 +257,10 @@
           app keeps in the iOS Keychain, so it cannot be turned back into the
           ID. It lets us give welcome and daily credits once per phone rather
           than once per new account.
-          For rewarded ads, the app also sends Google AdMob a one-way hash of
-          that ID, made on your phone before our secret key is added; Google
-          passes it to our server when it confirms you watched the ad.
+          For rewarded ads, the app also sends Google AdMob your random account
+          ID (not your name or email) and a one-way hash of that phone ID, made
+          on your phone before our secret key is added; Google passes both to
+          our server when it confirms you watched the ad.
         </li>
         <li>
           A push notification token, if you allow notifications, and your
