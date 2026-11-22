@@ -4,34 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Tarot in Sezgi</title>
-  <script>
-    var appUrl = 'sezgi:///tarot' + window.location.search + window.location.hash;
-    var storeUrl = 'https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet';
-    var fallbackTimer;
-
-    function cancelFallback() {
-      if (fallbackTimer) {
-        clearTimeout(fallbackTimer);
-        fallbackTimer = null;
-      }
-    }
-
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'hidden') {
-        cancelFallback();
-      }
-    });
-    window.addEventListener('pagehide', cancelFallback);
-
-    fallbackTimer = setTimeout(function() { window.location = storeUrl; }, 2000);
-    window.location = appUrl;
-  </script>
+  <style>
+    body { margin: 0; padding: 24px; box-sizing: border-box; min-height: 100vh; display: grid; place-items: center; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0f; color: #e8e8f0; }
+    h1 { font-size: 2rem; font-weight: 500; }
+    a { color: #e8c8a0; }
+  </style>
 </head>
-<body style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0A0A0F;color:#E8E8F0;display:grid;min-height:100vh;place-items:center;text-align:center;padding:24px;">
+<body>
   <main>
-    <h1 style="font-size:2rem;font-weight:500;letter-spacing:.04em;">SEZGI</h1>
-    <p style="color:#9A9CA8;">Opening Tarot in the Sezgi app...</p>
-    <a href="https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet" style="color:#00F0FF;">Get on Google Play</a>
+    <h1>Sezgi</h1>
+    <p id="status">Tarot readings are available in Sezgi on Android.</p>
+    <a id="open" hidden>Open Tarot in Sezgi</a>
+    <a id="store" hidden>Get on Google Play</a>
   </main>
+  <script>
+    (() => {
+      const ua = navigator.userAgent;
+      const isAppleMobile = /iPhone|iPad|iPod/i.test(ua) ||
+        (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      if (isAppleMobile) return;
+
+      const store = document.getElementById('store');
+      const storeUrl = new URL('https://play.google.com/store/apps/details?id=com.yinyangstudio.kismet');
+      const params = new URLSearchParams(location.search);
+      const referrer = new URLSearchParams();
+      for (const key of ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+        if (params.has(key)) referrer.set(key, params.get(key));
+      }
+      if (referrer.size) storeUrl.searchParams.set('referrer', referrer.toString());
+      store.href = storeUrl.href;
+      store.hidden = false;
+      if (!/Android/i.test(ua)) return;
+
+      const open = document.getElementById('open');
+      open.href = 'sezgi:///tarot' + location.search + location.hash;
+      open.hidden = false;
+      document.getElementById('status').textContent = 'Opening Tarot in Sezgi…';
+      const timer = setTimeout(() => location.replace(store.href), 2000);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) clearTimeout(timer);
+      });
+      window.addEventListener('pagehide', () => clearTimeout(timer));
+      location.replace(open.href);
+    })();
+  </script>
 </body>
 </html>

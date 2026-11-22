@@ -293,6 +293,12 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = api;
   } else if (root && root.document) {
-    render(root.document, root);
+    var loc = root.location;
+    var appPath = appPathFromPagePath(loc.pathname);
+    if (appPath === '/tarot' || appPath === '/tarot/') {
+      loc.replace(PREFIX + '/tarot/index.html' + loc.search + loc.hash);
+    } else {
+      render(root.document, root);
+    }
   }
 })(typeof window !== 'undefined' ? window : this);
